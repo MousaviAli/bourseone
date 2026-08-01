@@ -34,7 +34,7 @@ dependencies:
   flutter_markdown: ^0.7.2+1
 
   # Persian (Jalali) calendar
-  shamsi_date: ^1.1.4
+  shamsi_date: ^1.1.1
 
   # Voice input for the assistant
   speech_to_text: ^7.0.0
