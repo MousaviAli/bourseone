@@ -1,0 +1,64 @@
+name: takvan_plus
+description: "ایزی‌استاک (EasyStock) - Iranian capital market intelligent assistant"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.5.1
+
+  # Networking (only exercised when USE_MOCK_DATA=false)
+  dio: ^5.4.3
+  pretty_dio_logger: ^1.3.1
+
+  # Routing
+  go_router: ^14.2.0
+
+  # Local storage / secure token storage
+  shared_preferences: ^2.2.3
+  flutter_secure_storage: ^9.2.2
+
+  # UI / charts / fonts
+  fl_chart: ^0.68.0
+  google_fonts: ^6.2.1
+
+  # Chat markdown rendering
+  flutter_markdown: ^0.7.2+1
+
+  # Persian (Jalali) calendar
+  shamsi_date: ^1.1.1
+
+  # Open external links (Google Calendar "add event" URLs)
+  url_launcher: ^6.3.0
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/brand/
+
+  # NOTE: Vazirmatn/Inter are loaded at runtime via the google_fonts package
+  # (see core/theme/app_theme.dart) instead of being bundled as local font
+  # assets - this needs internet on first launch to download+cache them.
+  # If you need the app to look right with zero internet access ever
+  # (including the very first launch), download the .ttf files from
+  # fonts.google.com, put them under assets/fonts/, and add a `fonts:`
+  # section here pointing at them.
+  #
+  # Runtime config (API_BASE_URL etc.) comes from --dart-define, not a
+  # bundled .env file - see core/config/app_config.dart.
