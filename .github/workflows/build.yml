@@ -29,12 +29,21 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      # Generate the Gradle wrapper in an EMPTY scratch directory, not
+      # inside android/ - running `gradle wrapper` directly against our
+      # project would make Gradle evaluate the whole Flutter Gradle
+      # plugin (flutter.groovy), which breaks against the newer Gradle
+      # version apt-get installs (Gradle 9.x is incompatible with
+      # Flutter 3.24's legacy Groovy build scripts). An empty scratch
+      # dir has nothing to evaluate, so it bootstraps cleanly - we just
+      # copy the resulting wrapper files into android/ afterwards.
       - name: Ensure Gradle wrapper exists
         run: |
           if [ ! -f android/gradlew ]; then
             echo "gradlew missing - generating it in a scratch directory"
             command -v gradle >/dev/null 2>&1 || (sudo apt-get update -y && sudo apt-get install -y gradle)
             mkdir -p /tmp/gradle-wrapper-scratch
+            touch /tmp/gradle-wrapper-scratch/settings.gradle
             (cd /tmp/gradle-wrapper-scratch && gradle wrapper --gradle-version 8.6 --distribution-type all)
             cp /tmp/gradle-wrapper-scratch/gradlew android/gradlew
             cp /tmp/gradle-wrapper-scratch/gradlew.bat android/gradlew.bat
