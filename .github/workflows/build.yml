@@ -20,6 +20,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # local.properties (with flutter.sdk set) only exists after the
+      # Flutter tool has touched the project at least once - that just
+      # happened above, so it's now safe for `gradle wrapper` to
+      # evaluate android/settings.gradle.
       - name: Ensure Gradle wrapper exists
         working-directory: android
         run: |
@@ -29,15 +42,6 @@ jobs:
             gradle wrapper --gradle-version 8.6 --distribution-type all
           fi
           chmod +x gradlew
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.24.0'
-          channel: 'stable'
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
 
       - name: Generate localizations
         run: flutter gen-l10n || echo "gen-l10n skipped (hand-written fallback in repo is used)"
