@@ -1,0 +1,80 @@
+{
+  "@@locale": "en",
+  "appName": "EasyStock",
+  "appTagline": "Iran's Intelligent Capital Market Assistant",
+
+  "navDashboard": "Dashboard",
+  "navMarket": "Market",
+  "navWatchlist": "Watchlist",
+  "navAssistant": "Assistant",
+  "navReports": "Reports",
+  "navAcademy": "Academy",
+  "navProfile": "Profile",
+  "navSettings": "Settings",
+
+  "login": "Login",
+  "register": "Register",
+  "phoneNumber": "Phone number",
+  "otpTitle": "Verification code",
+  "otpSubtitle": "Enter the code sent to {phone}",
+  "@otpSubtitle": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+  "forgotPassword": "Forgot password",
+  "resendOtp": "Resend code",
+  "verify": "Verify",
+
+  "marketOpen": "Market Open",
+  "marketClosed": "Market Closed",
+  "marketPreOpen": "Pre-Open",
+  "tedpixIndex": "TEDPIX",
+  "equalWeightIndex": "Equal-Weight Index",
+  "industryIndex": "Industry Index",
+  "topGainers": "Top Gainers",
+  "topLosers": "Top Losers",
+  "mostTraded": "Most Traded",
+  "watchlistEmpty": "You haven't added any symbols to your watchlist yet",
+  "addToWatchlist": "Add to watchlist",
+  "createWatchlist": "Create new watchlist",
+  "searchSymbolHint": "Search symbol, industry or company...",
+
+  "priceChart": "Price Chart",
+  "technicalAnalysis": "Technical Analysis",
+  "fundamentalData": "Fundamentals",
+  "buyQueue": "Buy Queue",
+  "sellQueue": "Sell Queue",
+  "companyNews": "Company News",
+  "codalReports": "CODAL Reports",
+  "financialRatios": "Financial Ratios",
+
+  "portfolioValue": "Portfolio Value",
+  "dailyPnl": "Daily P/L",
+  "allocation": "Allocation",
+
+  "assistantGreeting": "Hi! I'm your assistant. Ask me anything about the capital market.",
+  "assistantInputHint": "Type or speak your message...",
+  "assistantSuggested": "Suggested questions",
+
+  "subscribeTitle": "Upgrade to Premium",
+  "subscribeBody": "To view details beyond 10 symbols, choose a subscription plan.",
+  "plan1Month": "1 Month",
+  "plan3Month": "3 Months",
+  "plan6Month": "6 Months",
+  "plan1Year": "1 Year",
+
+  "academyTitle": "EasyStock Academy",
+  "academyCourses": "Courses",
+  "academyArticles": "Articles",
+  "academyQuizzes": "Quizzes",
+
+  "settingsLanguage": "Language",
+  "settingsTheme": "Theme",
+  "settingsBiometric": "Biometric login",
+  "settingsNotifications": "Notifications",
+  "settingsLogout": "Log out",
+
+  "retry": "Retry",
+  "loading": "Loading...",
+  "noInternet": "No internet connection",
+  "somethingWrong": "Something went wrong"
+}
