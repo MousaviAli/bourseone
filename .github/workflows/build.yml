@@ -29,19 +29,20 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # local.properties (with flutter.sdk set) only exists after the
-      # Flutter tool has touched the project at least once - that just
-      # happened above, so it's now safe for `gradle wrapper` to
-      # evaluate android/settings.gradle.
       - name: Ensure Gradle wrapper exists
-        working-directory: android
         run: |
-          if [ ! -f gradlew ]; then
-            echo "gradlew missing - generating it"
+          if [ ! -f android/gradlew ]; then
+            echo "gradlew missing - generating it in a scratch directory"
             command -v gradle >/dev/null 2>&1 || (sudo apt-get update -y && sudo apt-get install -y gradle)
-            gradle wrapper --gradle-version 8.6 --distribution-type all
+            mkdir -p /tmp/gradle-wrapper-scratch
+            (cd /tmp/gradle-wrapper-scratch && gradle wrapper --gradle-version 8.6 --distribution-type all)
+            cp /tmp/gradle-wrapper-scratch/gradlew android/gradlew
+            cp /tmp/gradle-wrapper-scratch/gradlew.bat android/gradlew.bat
+            mkdir -p android/gradle/wrapper
+            cp /tmp/gradle-wrapper-scratch/gradle/wrapper/gradle-wrapper.jar android/gradle/wrapper/gradle-wrapper.jar
+            cp /tmp/gradle-wrapper-scratch/gradle/wrapper/gradle-wrapper.properties android/gradle/wrapper/gradle-wrapper.properties
           fi
-          chmod +x gradlew
+          chmod +x android/gradlew
 
       - name: Generate localizations
         run: flutter gen-l10n || echo "gen-l10n skipped (hand-written fallback in repo is used)"
